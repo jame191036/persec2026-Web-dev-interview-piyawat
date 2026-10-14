@@ -11,9 +11,11 @@ export function tribonacci(signature: readonly number[], length: number): number
   if (signature.length > MAX_SIGNATURE_LENGTH) {
     throw new RangeError(`ค่าเริ่มต้นต้องมี 0-${MAX_SIGNATURE_LENGTH} ตัว แต่ได้รับ ${signature.length} ตัว`);
   }
+  
   if (!signature.every(Number.isInteger)) {
     throw new TypeError('ค่าเริ่มต้นทุกตัวต้องเป็นจำนวนเต็ม');
   }
+
   if (!Number.isInteger(length) || length < 0) {
     throw new RangeError(`length ต้องเป็นจำนวนเต็มที่ไม่ติดลบ แต่ได้รับ ${length}`);
   }

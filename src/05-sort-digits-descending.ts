@@ -14,5 +14,6 @@ export function sortDigitsDescending(value: number): number {
   if (!Number.isSafeInteger(result)) {
     throw new RangeError(`ผลลัพธ์ของ ${value} เกิน Number.MAX_SAFE_INTEGER ทำให้ค่าคลาดเคลื่อนได้`);
   }
+  
   return result;
 }

@@ -9,9 +9,19 @@ type MatchRank = (typeof MATCH_RANK)[keyof typeof MATCH_RANK];
 /** จัดกลุ่มจากตำแหน่งแรกที่เจอคำค้น: ต้นคำ, กลางคำ หรือท้ายคำ */
 function rankMatch(text: string, needle: string): MatchRank | undefined {
   const index = text.indexOf(needle);
-  if (index === -1) return undefined;
-  if (index === 0) return MATCH_RANK.start;
-  if (index + needle.length === text.length) return MATCH_RANK.end;
+
+  if (index === -1) {
+    return undefined;
+  }
+
+  if (index === 0) {
+    return MATCH_RANK.start;
+  }
+
+  if (index + needle.length === text.length) {
+    return MATCH_RANK.end;
+  }
+
   return MATCH_RANK.middle;
 }
 
@@ -24,7 +34,9 @@ function rankMatch(text: string, needle: string): MatchRank | undefined {
  */
 export function autocomplete(search: string, items: readonly string[], maxResult: number): string[] {
   const limit = Math.floor(maxResult);
-  if (search === '' || !(limit > 0)) return [];
+  if (search === '' || !(limit > 0)) {
+    return [];
+  }
 
   const needle = search.toLowerCase();
 

@@ -25,12 +25,7 @@ export function isBalanced(input: string): boolean {
     }
 
     const expectedOpener = CLOSER_TO_OPENER.get(char);
-    // ตัวอักษรอื่นนอกจากวงเล็บ 6 ตัวถือว่า input ไม่ถูกต้อง
-    if (expectedOpener === undefined) {
-      return false;
-    }
-
-    if (stack.pop() !== expectedOpener) {
+    if (expectedOpener === undefined || stack.pop() !== expectedOpener) {
       return false;
     }
   }

@@ -48,6 +48,7 @@ export function toRoman(value: number): string {
       remaining -= amount;
     }
   }
+
   return result;
 }
 
@@ -69,5 +70,6 @@ export function fromRoman(roman: string): number {
     const next = SYMBOL_VALUES.get(normalized[i + 1] ?? '') ?? 0;
     total += current < next ? -current : current;
   }
+  
   return total;
 }

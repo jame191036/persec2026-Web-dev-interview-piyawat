@@ -2,8 +2,14 @@ const CHUNK_PATTERN = /\d+|\D+/g;
 const DIGITS_PATTERN = /^\d/;
 
 function compareText(a: string, b: string): number {
-  if (a < b) return -1;
-  if (a > b) return 1;
+  if (a < b) {
+    return -1;
+  }
+
+  if (a > b) {
+    return 1;
+  }
+
   return 0;
 }
 
@@ -14,9 +20,11 @@ function compareText(a: string, b: string): number {
 function compareDigits(a: string, b: string): number {
   const x = a.replace(/^0+(?=\d)/, "");
   const y = b.replace(/^0+(?=\d)/, "");
+
   if (x.length !== y.length) {
     return x.length - y.length;
   }
+
   return compareText(x, y);
 }
 
@@ -34,10 +42,15 @@ export function compareNatural(a: string, b: string): number {
     const y = chunksB[i]!;
     const bothNumeric = DIGITS_PATTERN.test(x) && DIGITS_PATTERN.test(y);
     const result = bothNumeric ? compareDigits(x, y) : compareText(x, y);
-    if (result !== 0) return result;
+    if (result !== 0) {
+      return result;
+    }
   }
 
-  if (chunksA.length !== chunksB.length) return chunksA.length - chunksB.length;
+  if (chunksA.length !== chunksB.length) {
+    return chunksA.length - chunksB.length;
+  }
+
   // ค่าเท่ากันแต่เขียนต่างกัน เช่น "TH01" กับ "TH1" ให้ผลลัพธ์คงที่เสมอ
   return compareText(a, b);
 }
